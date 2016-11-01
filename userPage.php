@@ -11,10 +11,10 @@ if (!isset($_SESSION['LoggedIn'])) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     if (isset($_GET['user_ID'])) {
-        $authorId = $_GET['user_ID'];
+        $_SESSION['autorId'] = $_GET['user_ID'];
 
-        $user = User::loadUserById($connection, $authorId);
-        $authorName = $user->getName();
+        $user = User::loadUserById($connection, $_SESSION['autorId']);
+        $_SESSION['autorName'] = $user->getName();
     }
 }
 ?>
@@ -43,10 +43,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     <body>
         <div id="Container">
         <?php
-        echo 'Witaj na stronie użytkownika ' . '<b>' . $authorName . '</b>' . ' , poniżej możesz przeczytać wszystkie jego wpisy!<br>';
-        echo '<br><br>';
+        echo 'Witaj na stronie użytkownika ' . '<b>' . $_SESSION['autorName'].'</b>'.' , poniżej możesz przeczytać wszystkie jego wpisy!<br><br>';
+        echo "<a href='sendingMessage.php?userID={$_SESSION['autorId']}'>";
+        echo "<input type='submit' value='Napisz do użytkownika'></input>";
+        echo "</a>";
+        echo '<br><br><hr/>';
         //var_dump($_GET['user_ID']);
-        $tweetsByIdAndByDate = Tweet::loadAllTweetsByUserIdAndByDate($connection, $authorId);
+        $tweetsByIdAndByDate = Tweet::loadAllTweetsByUserIdAndByDate($connection, $_SESSION['autorId']);
 
         foreach ($tweetsByIdAndByDate as $tweet) {
             echo $tweet->getText();
@@ -55,8 +58,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             echo '<br><hr/>';
         }
         echo '<br>';
+        
         ?>
-        <a href="mainpage.php">Powrót do głównej</a>
+        <a href="mainpage.php">Powrót do strony głównej</a>
         </div>
     </body>
 </html>

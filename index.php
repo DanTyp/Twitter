@@ -3,9 +3,16 @@ require_once 'src/session.php';
 require_once 'src/User.php'; // w klasię User trzeba dodać metodę loadUserByEmail
 require_once 'src/connection.php';
 
+
+if (isset($_SESSION['LoggedIn'])) {
+    header('Location: mainpage.php');
+    exit();
+}
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['email']) && $_POST['password']) {
-        
+
         $email = $_POST['email'];
         $password = $_POST['password'];
         $loggedUser = User::loadUserByEmail($connection, $email);

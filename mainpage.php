@@ -40,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 margin-right:auto;
                 margin-left:auto;
                 margin-top:10px;
+                text-align: center;
             }
             .error
             {
@@ -61,7 +62,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php
             echo '<div id="Container">';
             echo "<p>Witaj na stronie głównej " . $_SESSION['loggedUserName'] . '!' .
-            '&nbsp &nbsp' . '<a href="editUser.php">Edytuj swoje dane</a>' . '&nbsp &nbsp' . '<a href="logout.php">Wyloguj się!</a></p>';
+            '&nbsp &nbsp' . '<a href="editUser.php">Edytuj swoje dane</a>' . '&nbsp &nbsp' .
+                    '<a href="messagesPage.php">Wiadomości</a>'.'&nbsp &nbsp' .'<a href="logout.php">Wyloguj się!</a>';
+                    
             echo '</div>';
             ?>
             <br>
@@ -108,8 +111,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo '<br>';
                 echo $tweet->getCreationDate();
                 echo '<br>';
-                echo 'ID wpisu: ' . $tweetId;
-                echo '<br>';
+                //echo 'ID wpisu: ' . $tweetId;
+                //echo '<br>';
                 //echo 'ID Użytkownika: ' . $userId;
                 //echo '<br>';
 

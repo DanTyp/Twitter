@@ -57,7 +57,7 @@ class Tweet {
             }
         } else { //jeżeli taki wpis już istnieje to mogę go edytować, wówczas chcę żeby zmieniła się treść i data dodania
             $sql = "UPDATE Tweet SET text = '$this->text',"
-                    . "email = '$this->creationDate',";
+                    . "creationDate = '$this->creationDate',"; //żle brak części WHERE id = $this->id
 
 
             $result = $connection->query($sql);

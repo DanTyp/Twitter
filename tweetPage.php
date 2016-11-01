@@ -33,6 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $newComment->setText($CommentText);
         $newComment->saveToDB($connection);
         $_SESSION['correct_comment'] = 'Komentarz został dodany';
+        header('Location: tweetPage.php'); //dzięki temu po odświeżeniu post nie doda się ponownie
+        exit();
     } else {
         $_SESSION['wrong_comment'] = 'Komentarze mogą zawierać od 1 do 60 znaków!';
     }
