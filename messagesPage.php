@@ -35,7 +35,7 @@ if (!isset($_SESSION['LoggedIn'])) {
             <?php
             echo '<div id="Container">';
             echo "<p><h3>Skrzynka pocztowa</h3></p> ";
-            echo "<p><h4>Wiadomości odebrane</h4></p>";
+            echo "<p><h4>Wiadomości odebrane:</h4></p>";
 
             $allReceivedMessages = Message::loadAllMessagesByReceiverIdAndByDate($connection, $_SESSION['loggedUserId']);
 

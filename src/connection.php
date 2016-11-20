@@ -11,4 +11,4 @@ if($connection->connect_error){
     die("Connection to database twitter failed: $connection->connect_error");
 }
 
-echo "Connection to database $dbname successful!<br>";
+//echo "Connection to database $dbname successful!<br>";
